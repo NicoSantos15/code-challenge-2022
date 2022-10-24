@@ -5,7 +5,7 @@
 
 <script>
 export default {
-  props: ['users'],
+  props: ['users']
 //   data: function () {
 //     return { hashid: "" };
 //   },

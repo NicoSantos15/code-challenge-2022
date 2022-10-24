@@ -9,7 +9,7 @@
 
 <body>
     <div id="app">
-		<span></span>
+		<my-vue-component :users={{ json_encode($search) }}></my-vue-component>
 	</div>
     @vite('resources/js/app.js')
 </body>
