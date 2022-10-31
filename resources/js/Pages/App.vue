@@ -16,22 +16,22 @@
         <div class="card card-default">
           <div class="card-header">Search Image</div>
           <div class="card-body">
-            <form action="" method="POST" >
+            <form action="" method="POST">
               <div class="form-group">
                 <input
                   type="text"
                   name="title"
                   placeholder="Image name"
                   class="form-control"
+                  v-model="message"
                 />
-                
               </div>
               <div class="form-group">
-                <input
-                  type="submit"
-                  value="Search Image"
-                  class="btn btn-info"
-                  @click.prevent="save('')">
+                <button class="search-button">
+                  <a :href="message"
+                    >Search</a
+                  >
+                </button>
               </div>
             </form>
           </div>
@@ -45,16 +45,16 @@
             v-for="(item, index) in currentPage"
             :key="index"
           >
-            <img v-if="item.urls"
+            <img
+              v-if="item.urls"
               class="image{{ index }}"
               :src="item.urls.regular"
               alt=""
               height="400"
               width="400"
             />
-            <p v-if="item.description">{{  cutting(item.description, 20) }}</p>
+            <p v-if="item.description">{{ cutting(item.description, 20) }}</p>
             <p v-else>{{ item.alt_description }}</p>
-
           </div>
         </div>
         <slot></slot>
@@ -65,21 +65,21 @@
 
 <script>
 export default {
-  
+  data() {
+    return {
+      message: "",
+    };
+  },
   props: {
     currentPage: {
       imageUrl: Object,
     },
   },
   methods: {
-        cutting(data,num){
-            const reqdString = data.split("").slice(0, num).join("");
-            return reqdString;
-        },
-        save() {
-            this.$inertia.post(search)
-            console.log('CHEECKKKKK: ');
-        },
-    }
+    cutting(data, num) {
+      const reqdString = data.split("").slice(0, num).join("");
+      return reqdString;
+    },
+  },
 };
 </script>
