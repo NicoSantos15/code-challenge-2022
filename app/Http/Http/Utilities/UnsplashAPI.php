@@ -2,6 +2,7 @@
 
 namespace App\Http\Utilities;
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 
 class UnsplashAPI
